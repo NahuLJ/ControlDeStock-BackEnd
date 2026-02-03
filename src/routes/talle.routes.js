@@ -1,6 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const talleController = require("../controllers/talle.controller");
+const {
+  createTalle,
+  updateTalle,
+  deleteTalle,
+  getAllTalles,
+  getTalleById,
+  getTalleByName
+} = require("../controllers/talle.controller");
+
 const {
   validateTalleSchema,
   validateTalleById,
@@ -10,41 +18,41 @@ const {
 
 //1. Crear un nuevo talle
 router.post(
-  "/talles",
+  "/",
   validateTalleSchema,
   validateTalleName,
-  talleController.createTalle,
+  createTalle,
 );
 
 //2. Actualizar un talle por ID
 router.put(
-  "/talles/:id",
+  "/:id",
   validateTalleSchema,
   validateTalleById,
   validateTalleName,
-  talleController.updateTalle,
+  updateTalle,
 );
 
 //3. Eliminar un talle por ID
-router.delete("/talles/:id", 
+router.delete("/:id", 
   validateTalleById, 
-  talleController.deleteTalle
+  deleteTalle
 );
 
 //4. Obtener todos los talles
-router.get("/talles", talleController.getAllTalles);
+router.get("/", getAllTalles);
 
 //5. Obtener un talle por ID
-router.get("/talles/:id", 
+router.get("/:id", 
   validateTalleById, 
-  talleController.getTalleById
+  getTalleById
 );
 
 //6. Buscar talles por nombre
 router.get(
-  "/talles/:nombre",
+  "/nombre/:nombre",
   validateTalleByName,
-  talleController.getTallesByName,
+  getTalleByName,
 );
 
 module.exports = router;

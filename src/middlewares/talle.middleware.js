@@ -1,7 +1,7 @@
 const { talleSchema } = require("../schemas/talle.schema");
 const mapErrors = require("../middlewares/mapErrors");
 const genericSchemaValidator = require("../schemas/genericSchemaValidator");
-const { Talle } = require("../db/models");
+const { Talle } = require("../../db/models");
 const {
   validateModelById,
   validateModelName,

@@ -1,4 +1,4 @@
-const { Talle } = require("../db/models");
+const { Talle } = require("../../db/models");
 
 //1. Crear un nuevo talle
 const createTalle = async (req, res) => {

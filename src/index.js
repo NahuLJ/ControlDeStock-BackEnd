@@ -3,7 +3,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const db = require('../db/models');
 const cors = require('cors');
+const talleRoutes = require('../src/routes/talle.routes');
 
+app.use('/api/talles', talleRoutes);
 app.use(cors());
 app.use(express.json());
 
