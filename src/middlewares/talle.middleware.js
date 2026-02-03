@@ -17,27 +17,24 @@ const validateTalleSchema = (req, res, next) => {
   next();
 };
 
-const validateTalleById = (req, res, next) => {
-  const { id } = req.params;
-  const error = validateModelById(Talle, id);
+const validateTalleById = async (req, res, next) => {
+  const error = await validateModelById(Talle, req.params.id);
   if (error) {
     return res.status(404).json(error);
   }
   next();
 };
 
-const validateTalleByName = (req, res, next) => {
-  const { nombre } = req.params;
-  const error = validateModelByName(Talle, nombre);
+const validateTalleByName = async (req, res, next) => {
+  const error = await validateModelByName(Talle, req.params.nombre);
   if (error) {
     return res.status(404).json(error);
   }
   next();
 };
 
-const validateTalleName = (req, res, next) => {
-  const { nombre } = req.body;
-  const error = validateModelName(Talle, nombre);
+const validateTalleName = async (req, res, next) => {
+  const error = await validateModelName(Talle, req.body.nombre);
   if (error) {
     return res.status(400).json(error);
   }

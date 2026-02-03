@@ -16,12 +16,12 @@ const {
   validateTalleName,
 } = require("../middlewares/talle.middleware");
 
-//1. Crear un nuevo talle
+//1. Crear un nuevo talle VERIFICADO
 router.post(
   "/",
   validateTalleSchema,
   validateTalleName,
-  createTalle,
+  createTalle
 );
 
 //2. Actualizar un talle por ID
@@ -30,7 +30,7 @@ router.put(
   validateTalleSchema,
   validateTalleById,
   validateTalleName,
-  updateTalle,
+  updateTalle
 );
 
 //3. Eliminar un talle por ID
