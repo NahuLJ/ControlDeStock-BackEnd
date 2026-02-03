@@ -14,11 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Talle.init({
-    nombre: DataTypes.STRING
+    nombre: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Talle',
-    tableName: 'Talles', //agrego esto porque se crea con minuscula
   });
   return Talle;
 };
