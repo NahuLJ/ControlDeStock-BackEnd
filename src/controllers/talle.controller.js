@@ -10,19 +10,15 @@ const createTalle = async (req, res) => {
 const updateTalle = async (req, res) => {
   const { id } = req.params;
   const { nombre } = req.body;
-  const talle = await Talle.update(
-    { nombre },
-    { where: { id }}
-  );
-  await talle.save();
+  await Talle.update({ nombre }, { where: { id } });
 
   return res.status(200).json(await Talle.findByPk(id));
-}
+};
 
 //3. Eliminar un talle por ID
 const deleteTalle = async (req, res) => {
   const { id } = req.params;
-  await Talle.destroy({ where: { id }});
+  await Talle.destroy({ where: { id } });
   return res.status(204).send();
 };
 
@@ -30,21 +26,21 @@ const deleteTalle = async (req, res) => {
 const getAllTalles = async (req, res) => {
   const talles = await Talle.findAll();
   return res.status(200).json(talles);
-}
+};
 
 //5. Obtener un talle por ID
 const getTalleById = async (req, res) => {
   const { id } = req.params;
   const talle = await Talle.findByPk(id);
   return res.status(200).json(talle);
-}
+};
 
-//6. Buscar talles por nombre 
+//6. Buscar talles por nombre
 const getTalleByName = async (req, res) => {
   const { nombre } = req.params;
-  const talles = await Talle.findAll({ where: { nombre }});
+  const talles = await Talle.findAll({ where: { nombre } });
   return res.status(200).json(talles);
-}
+};
 
 module.exports = {
   createTalle,
@@ -52,5 +48,5 @@ module.exports = {
   deleteTalle,
   getAllTalles,
   getTalleById,
-  getTalleByName
+  getTalleByName,
 };

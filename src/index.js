@@ -5,10 +5,15 @@ const db = require('../db/models');
 const cors = require('cors');
 const talleRoutes = require('../src/routes/talle.routes');
 
+const swaggerUI = require('swagger-ui-express');
+const swaggerSpecs = require('./swagger/swagger');
+const { FORCE } = require('sequelize/lib/index-hints');
+
 app.use(express.json());
 app.use(cors());
 
 app.use('/api/talles', talleRoutes);
+app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 
 /*
   Correr por primera vez para crear la base y tablas
