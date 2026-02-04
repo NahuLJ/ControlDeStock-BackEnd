@@ -1,0 +1,49 @@
+//1. Crear un nuevo registro
+const createModel = (Model) => async (req, res) => {
+  const newEntity = await Model.create(req.body);
+  return res.status(201).json(newEntity);
+};
+
+//2. Actualizar un registro existente
+const updateModel = (Model) => async (req, res) => {
+  const { id } = req.params;
+  const { nombre } = req.body;
+  await Model.update({ nombre }, { where: { id } });
+  return res.status(200).json(await Model.findByPk(id));
+};
+
+//3. Eliminar un registro
+const deleteModel = (Model) => async (req, res) => {
+  const { id } = req.params;
+  await Model.destroy({ where: { id } });
+  return res.status(204).send();
+};
+
+//4. Obtener todos los registros
+const getAllModels = (Model) => async (req, res) => {
+  const entities = await Model.findAll();
+  return res.status(200).json(entities);
+};
+
+//5. Obtener un registro por ID
+const getModelById = (Model) => async (req, res) => {
+  const { id } = req.params;
+  const entity = await Model.findByPk(id);
+  return res.status(200).json(entity);
+};
+
+//6. Obtener registros por nombre
+const getModelByName = (Model) => async (req, res) => {
+  const { nombre } = req.params;
+  const entities = await Model.findAll({ where: { nombre } });
+  return res.status(200).json(entities);
+};
+
+module.exports = {
+  createModel,
+  updateModel,
+  deleteModel,
+  getAllModels,
+  getModelById,
+  getModelByName,
+};
