@@ -39,6 +39,13 @@ const getModelByName = (Model) => async (req, res) => {
   return res.status(200).json(entities);
 };
 
+//7. Obtener registros por atributo de body
+const getModelByParam = (Model, attribute) => async (req, res) => {
+  const value = req.params[attribute];
+  const entities = await Model.findAll({ where: { [attribute]: value } });
+  return res.status(200).json(entities);
+}
+
 module.exports = {
   createModel,
   updateModel,
@@ -46,4 +53,5 @@ module.exports = {
   getAllModels,
   getModelById,
   getModelByName,
+  getModelByParam
 };
