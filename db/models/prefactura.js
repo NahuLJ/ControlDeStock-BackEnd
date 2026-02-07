@@ -14,8 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   PreFactura.init({
-    fecha: DataTypes.DATE,
-    cliente: DataTypes.STRING
+    fecha: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'PreFactura',

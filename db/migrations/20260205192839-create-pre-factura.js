@@ -11,9 +11,6 @@ module.exports = {
       },
       fecha: {
         type: Sequelize.DATE
-      },
-      cliente: {
-        type: Sequelize.STRING
       }
     });
   },
