@@ -6,6 +6,7 @@ const cors = require('cors');
 const talleRoutes = require('./routes/talle.routes');
 const colorRoutes = require('./routes/color.routes');
 const preFacturaRoutes = require("./routes/preFactura.routes");
+const clienteRoutes = require("./routes/cliente.routes");
 
 const swaggerUI = require('swagger-ui-express');
 const swaggerSpecs = require('./swagger/swagger');
@@ -16,6 +17,7 @@ app.use(cors());
 app.use('/api/talles', talleRoutes);
 app.use('/api/colores', colorRoutes);
 app.use('/api/preFactura', preFacturaRoutes);
+app.use('/api/clientes', clienteRoutes);
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 
 /*
